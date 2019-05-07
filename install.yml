@@ -1,0 +1,4 @@
+ - hosts: server3
+   roles:
+    - snmpv3
+

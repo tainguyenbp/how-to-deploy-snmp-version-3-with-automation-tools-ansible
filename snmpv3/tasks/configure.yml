@@ -1,0 +1,23 @@
+#- name: Backup file config snmpd.conf old
+#  template:
+#    src=snmpd.conf
+#    dest=/etc/snmp/snmpd.conf
+- name: Stoped the service snmp
+  service:
+    name: snmpd
+    state: stopped
+
+- name: Copy new config file snmpd.conf
+  template:
+    src=snmpd.conf
+    dest=/etc/snmp/snmpd.conf
+
+- name: Create user the service snmp version 3
+  command: net-snmp-create-v3-user -ro -A {{snmpv3_password}} -a {{snmpv3_authentication_type}} -X {{snmpv3_data_encryption_key}} -x {{snmpv3_encryption_type}} {{snmpv3_user}}
+
+- name: Restart the service snmpd
+  service:
+    name: snmpd
+    state: restarted
+    enabled: true
+

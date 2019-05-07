@@ -1,0 +1,7 @@
+snmpv3_user: tainguyenbp
+snmpv3_password: TAINGUYENBP@2018
+# authentication type: SHA or MD5
+snmpv3_authentication_type: SHA
+# encryption type: DES or AES
+snmpv3_encryption_type: AES
+snmpv3_data_encryption_key: TAINGUYENBP@2018
